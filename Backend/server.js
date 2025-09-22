@@ -10,7 +10,7 @@ dotenv.config()
 
 const app = express()
 app.use(cors({
-    origin:"http://localhost:5173",
+    origin:"https://virtualassistant-frontend-x2gp.onrender.com",
     credentials:true
 }))
 const port = process.env.PORT || 3000
