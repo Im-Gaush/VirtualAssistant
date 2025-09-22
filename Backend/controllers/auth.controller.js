@@ -25,8 +25,8 @@ export const singUp =async(req,res)=>{
     res.cookie("token",token,{
         httpOnly:true,
         maxAge: 1000*60*60*24*7,
-        sameSite: "strict",
-        secure: false
+        sameSite: "None",
+         secure: true
     })
     res.status(201).json({message:"User created successfully",user})
    } catch (error) {
@@ -51,8 +51,8 @@ export const logIn =async(req,res)=>{
      res.cookie("token",token,{
          httpOnly:true,
          maxAge: 1000*60*60*24*7,
-         sameSite: "strict",
-         secure: false
+         sameSite: "None",
+         secure: true
      })
      res.status(200).json({message:"User Login successfully",user})
     } catch (error) {
