@@ -245,80 +245,79 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="relative w-full min-h-screen bg-gradient-to-br from-gray-950 via-black to-gray-900 flex flex-col items-center py-14 px-6 overflow-hidden gap-8">
+   <div className="relative w-full min-h-screen bg-gradient-to-br from-gray-950 via-black to-gray-900 flex flex-col items-center py-6 px-4 sm:py-10 sm:px-6 overflow-hidden gap-6">
 
-    {/* 🌌 Floating data stream particles */}
-    <div className="absolute inset-0 overflow-hidden">
-      {[...Array(30)].map((_, i) => (
-        <span
-          key={i}
-          className="absolute w-1 h-2 bg-cyan-400 rounded-full opacity-70 animate-pulse"
-          style={{
-            top: `${Math.random() * 100}%`,
-            left: `${Math.random() * 100}%`,
-            animationDuration: `${3 + Math.random() * 3}s`,
-          }}
-        />
-      ))}
-    </div>
-  
-    {/* 🚀 Action Buttons */}
-    <div className="absolute top-8 right-8 flex flex-col gap-4">
-      <button
-        className="px-6 py-2 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-bold shadow-lg hover:scale-105 transition-all"
-        onClick={handleLogout}
-      >
-        Log Out
-      </button>
-      <button
-        className="px-6 py-2 rounded-xl bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold shadow-lg hover:scale-105 transition-all"
-        onClick={() => navigate("/customize")}
-      >
-        Create Assistant
-      </button>
-    </div>
-  
-    {/* 🤖 AI Assistant Card */}
-    <div className="relative w-72 h-96 md:w-80 md:h-100 rounded-3xl overflow-hidden shadow-2xl border border-cyan-400/40 flex justify-center items-center">
-      {/* Glowing Aura */}
-      <div className="absolute w-full h-full rounded-3xl bg-cyan-400/20 blur-3xl animate-pulse -z-10"></div>
-  
-      <img
-        src={userData?.assistantImage || userImg}
-        alt="Assistant"
-        className="w-full h-full object-cover rounded-3xl shadow-lg transition-transform duration-700 hover:scale-105"
+  {/* 🌌 Floating data stream particles */}
+  <div className="absolute inset-0 overflow-hidden">
+    {[...Array(20)].map((_, i) => (
+      <span
+        key={i}
+        className="absolute w-1 h-2 bg-cyan-400 rounded-full opacity-70 animate-pulse"
+        style={{
+          top: `${Math.random() * 100}%`,
+          left: `${Math.random() * 100}%`,
+          animationDuration: `${3 + Math.random() * 3}s`,
+        }}
       />
-  
-      {/* Glassy reflection overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10 rounded-3xl"></div>
-  
-      {/* Shiny sweep effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-out rounded-3xl"></div>
-    </div>
-  
-    {/* Assistant Name */}
-    <h1 className="text-3xl md:text-4xl font-extrabold text-cyan-400 drop-shadow-lg">
-      I'm {userData?.assistantName || "Aurora"}
-    </h1>
-  
-    {/* 👁 AI / User animation */}
-    <div className="relative w-48 h-48 md:w-56 md:h-56">
-      {!aiText ? (
-        <img src={userImg} alt="User idle" className="w-full h-full object-contain animate-bounce" />
-      ) : (
-        <img src={aiImg} alt="AI speaking" className="w-full h-full object-contain animate-pulse" />
-      )}
-    </div>
-  
-    {/* 💬 Speech Bubble */}
-    { (userText || aiText) && (
-      <div className={`px-4 py-2 rounded-xl shadow-lg max-w-[70%] text-white font-semibold
-        ${userText ? "self-end bg-gray-800/80" : "self-start bg-cyan-400/20 text-cyan-200"}`}>
-        {userText || aiText}
-      </div>
+    ))}
+  </div>
+
+  {/* 🚀 Action Buttons (Top Bar) */}
+  <div className="w-full flex justify-end gap-2 sm:gap-4 px-2 sm:px-6">
+    <button
+      className="px-4 py-2 sm:px-6 sm:py-2 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 text-black text-sm sm:text-base font-bold shadow-lg hover:scale-105 transition-all"
+      onClick={handleLogout}
+    >
+      Log Out
+    </button>
+    <button
+      className="px-4 py-2 sm:px-6 sm:py-2 rounded-xl bg-gradient-to-r from-yellow-400 to-orange-500 text-black text-sm sm:text-base font-bold shadow-lg hover:scale-105 transition-all"
+      onClick={() => navigate("/customize")}
+    >
+      Create Assistant
+    </button>
+  </div>
+
+  {/* 🤖 AI Assistant Card */}
+  <div className="relative w-56 h-72 sm:w-72 sm:h-96 md:w-80 md:h-[26rem] rounded-3xl overflow-hidden shadow-2xl border border-cyan-400/40 flex justify-center items-center mt-6">
+    {/* Glowing Aura */}
+    <div className="absolute w-full h-full rounded-3xl bg-cyan-400/20 blur-3xl animate-pulse -z-10"></div>
+
+    <img
+      src={userData?.assistantImage || userImg}
+      alt="Assistant"
+      className="w-full h-full object-cover rounded-3xl shadow-lg transition-transform duration-700 hover:scale-105"
+    />
+
+    {/* Glass overlay */}
+    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10 rounded-3xl"></div>
+  </div>
+
+  {/* Assistant Name */}
+  <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-cyan-400 drop-shadow-lg text-center">
+    I'm {userData?.assistantName || "Aurora"}
+  </h1>
+
+  {/* 👁 AI / User animation */}
+  <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-48 md:h-48 flex justify-center items-center">
+    {!aiText ? (
+      <img src={userImg} alt="User idle" className="w-full h-full object-contain animate-bounce" />
+    ) : (
+      <img src={aiImg} alt="AI speaking" className="w-full h-full object-contain animate-pulse" />
     )}
   </div>
-  
+
+  {/* 💬 Speech Bubble */}
+  {(userText || aiText) && (
+    <div
+      className={`px-3 py-2 sm:px-4 sm:py-2 rounded-xl shadow-lg max-w-[90%] sm:max-w-[70%] text-white font-semibold text-sm sm:text-base
+        ${userText ? "self-end bg-gray-800/80" : "self-start bg-cyan-400/20 text-cyan-200"}`}
+    >
+      {userText || aiText}
+    </div>
+  )}
+</div>
+
   );
 };
 
